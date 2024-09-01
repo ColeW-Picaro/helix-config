@@ -1,0 +1,39 @@
+[language-server.rust-analyzer]
+config = { check = { command = "clippy" } }
+
+[[language]]
+name = "razor"
+scope = "source.razor"
+injection-regex = "razor"
+grammar = "razor"
+file-types = ["razor"]
+
+[[grammar]]
+name = "razor"
+source = { git = "https://github.com/tree-sitter/tree-sitter-razor", rev = "60edbd8e798e416f5226a746396efa6a8614fa9b" }
+
+[[language]]
+name = "vue"
+auto-format = true
+scope = "source.vue"
+injection-regex = "vue"
+file-types = ["vue"]
+language-servers = ["typescript-language-server"]
+formatter = {command = 'prettier', args= ["--parser", "vue"]}
+roots = ["package.json", "vue.config.js", ".prettierrc.json"]
+
+[language-server.vue-language-server]
+command = "vue-language-server"
+args = ["--stdio"]
+config.hostInfo = "helix"
+config.typescript = { tsdk = "/home/cole/.npm-global/lib/node_modules/typescript/lib/" }
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+config.hostInfo = "helix"
+
+[[language-server.typescript-language-server.config.plugins]]
+name = "@vue/typescript-plugin"
+location = "/home/cole/.npm-global/lib/node_modules/@vue/typescript-plugin"
+languages = ["vue"]
