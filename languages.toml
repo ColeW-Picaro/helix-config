@@ -37,3 +37,26 @@ config.hostInfo = "helix"
 name = "@vue/typescript-plugin"
 location = "/home/cole/.npm-global/lib/node_modules/@vue/typescript-plugin"
 languages = ["vue"]
+
+[language-server.godot]
+command = "ncat" 
+args = [ "127.0.0.1", "6005"]
+
+[language-server.gdshader]
+command = "gdshader-lsp" 
+
+[[language]]
+name = "gdscript"
+language-servers = [ "godot" ]
+
+[[language]]
+name = "gdshader"
+scope = "source.gdshader"
+file-types = [ "gdshader" ]
+language-servers = [ "gdshader" ]
+grammar = "gdshader"
+
+[[grammar]]
+name = "gdshader"
+source = { git = "https://github.com/GodOfAvacyn/tree-sitter-gdshader.git", rev = "ffd9f958df13cae04593781d7d2562295a872455" }
+
