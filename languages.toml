@@ -48,6 +48,7 @@ command = "gdshader-lsp"
 [[language]]
 name = "gdscript"
 language-servers = [ "godot" ]
+indent = { tab-width = 4, unit = "    "}
 
 [[language]]
 name = "gdshader"
